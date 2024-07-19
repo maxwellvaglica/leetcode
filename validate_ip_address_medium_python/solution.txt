@@ -1,0 +1,5 @@
+import re
+class Solution:
+    def validIPAddress(self, queryIP: str) -> str:
+        return 'IPv6' if ':' in queryIP and re.match(r'^((\d|[a-fA-F]){1,4}:){7}(\d|[a-fA-F]){1,4}$', queryIP) else 'IPv4' if re.match(r'^((([1-9]\d{0,2})|([0]))[.]){3}(([1-9]\d{0,2})|([0]))$', queryIP) and all(0 <= int(seg) <= 255 for seg in queryIP.split('.')) else 'Neither'
+        
